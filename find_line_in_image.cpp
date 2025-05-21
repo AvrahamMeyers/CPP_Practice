@@ -10,10 +10,7 @@
 
 // ** Type Definitions
 
-const
-
-    const points
-    find_line_in_image(const image &img)
+const Points find_line_in_image(const Image &img)
 {
     int length = img.size();
     int width = img[0].size();
@@ -58,7 +55,7 @@ const
         }
     }
 
-    std::optional<std::array<int, 2>> first_point, second_point;
+    std::optional<Point> first_point, second_point;
 
     for (auto &[edge, flag] : flags)
     {
@@ -77,7 +74,7 @@ const
         }
         else
         {
-            break; // Stop after the two points are found
+            break;
         }
     }
 
@@ -95,6 +92,108 @@ const
     }
 }
 
-const point find_point_in_edge(const image &image, Edge edge)
+template <
+    typename ReturnType,
+    typename GetValueFunc,
+    typename IndexMapper>
+ReturnType search_for_point_in_line(const int length, GetValueFunc getValue, IndexMapper mapIndex)
 {
+    if (length == 1)
+    {
+        PixelColor value = getValue(0);
+        if (value == PixelColor::ONE)
+        {
+            return mapIndex(0);
+        }
+        else
+        {
+            if constexpr (std::is_same_v<ReturnType, int>)
+                return -1;
+            else if constexpr (std::is_same_v<ReturnType, std::pair<int, int>>)
+                return std::make_pair(-1, -1);
+        }
+    }
+
+    int left = 0, right = length - 1;
+
+    int left_value = getValue(left);
+    int right_value = getValue(right);
+
+    while (left < right - 1)
+    {
+        int mid = (left + right) / 2;
+        int mid_value = getValue(mid);
+
+        if (mid_value == left_value)
+        {
+            left = mid;
+            left_value = mid_value;
+        }
+        else
+        {
+            right = mid;
+            right_value = mid_value;
+        }
+    }
+
+    if (left_value == PixelColor::ONE)
+    {
+        return mapIndex(left);
+    }
+    else
+        return mapIndex(right);
+}
+
+int search_for_point_in_1d_line(std::vector<PixelColor> line)
+{
+
+    auto getValue = [&](int i)
+    { return line[i]; };
+    auto mapIndex = [&](int i)
+    { return i; };
+
+    return search_for_point_in_line<int>(line.size(), getValue, mapIndex);
+}
+
+const Point find_point_in_edge(const Image &img, Edge edge)
+{
+    switch (edge)
+    {
+    case Edge::TOP:
+    {
+        int length = img[0].size();
+        auto getValue = [&](int i)
+        { return img[0][i]; };
+        auto mapIndex = [&](int i)
+        { return std::make_pair(0, i); };
+        return search_for_point_in_line<Point>(length, getValue, mapIndex);
+    }
+    case Edge::BOTTOM:
+    {
+        int length = img[0].size();
+        auto getValue = [&](int i)
+        { return img[img.size() - 1][i]; };
+        auto mapIndex = [&](int i)
+        { return std::make_pair(img.size() - 1, i); };
+        return search_for_point_in_line<Point>(length, getValue, mapIndex);
+    }
+    case Edge::LEFT:
+    {
+        int length = img.size();
+        auto getValue = [&](int i)
+        { return img[i][0]; };
+        auto mapIndex = [&](int i)
+        { return std::make_pair(i, 0); };
+        return search_for_point_in_line<Point>(length, getValue, mapIndex);
+    }
+    case Edge::RIGHT:
+    {
+        int length = img.size();
+        auto getValue = [&](int i)
+        { return img[i][img[0].size() - 1]; };
+        auto mapIndex = [&](int i)
+        { return std::make_pair(i, img[0].size() - 1); };
+        return search_for_point_in_line<Point>(length, getValue, mapIndex);
+    }
+    }
 }

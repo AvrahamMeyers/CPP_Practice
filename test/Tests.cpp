@@ -20,52 +20,62 @@ struct Tests : public ::testing::Test
 
     // Edge cases:
     // image has 1 pixel
-    const image one_pixel_1 = {{PixelColor::ONE}};
-    const image one_pixel_0 = {{PixelColor::ZERO}};
+    const Image one_pixel_1 = {{PixelColor::ONE}};
+    const Image one_pixel_0 = {{PixelColor::ZERO}};
 
     // image is a single row
-    const image single_row = {{PixelColor::ONE, PixelColor::ZERO}};
+    const Image single_row = {{PixelColor::ONE, PixelColor::ZERO}};
 
     // image is a single column
-    const image single_col = {
+    const Image single_col = {
         {PixelColor::ONE},
         {PixelColor::ZERO}};
 
-    const image all_1s = {
+    const Image all_1s = {
         {PixelColor::ONE, PixelColor::ONE},
         {PixelColor::ONE, PixelColor::ONE}};
-    const image all_0s = {
+    const Image all_0s = {
         {PixelColor::ZERO, PixelColor::ZERO},
         {PixelColor::ZERO, PixelColor::ZERO}};
 
-    const image verticalLeftImage = {
+    const Image verticalLeftImage = {
         {PixelColor::ONE, PixelColor::ZERO},
         {PixelColor::ONE, PixelColor::ZERO}};
 
-    const image verticalRightImage = {
+    const Image verticalRightImage = {
         {PixelColor::ZERO, PixelColor::ONE},
         {PixelColor::ZERO, PixelColor::ONE}};
 
-    const image horizontalTopImage = {
+    const Image horizontalTopImage = {
         {PixelColor::ONE, PixelColor::ONE},
         {PixelColor::ZERO, PixelColor::ZERO}};
 
-    const image horizontalBottomImage = {
+    const Image horizontalBottomImage = {
         {PixelColor::ZERO, PixelColor::ZERO},
         {PixelColor::ONE, PixelColor::ONE}};
 
-    const image diagonalTopLeftImage = {
+    const Image diagonalTopLeftImage = {
         {PixelColor::ONE, PixelColor::ZERO},
         {PixelColor::ZERO, PixelColor::ZERO}};
-    const image diagonalTopRightImage = {
+    const Image diagonalTopRightImage = {
         {PixelColor::ZERO, PixelColor::ONE},
         {PixelColor::ZERO, PixelColor::ZERO}};
-    const image diagonalBottomLeftImage = {
+    const Image diagonalBottomLeftImage = {
         {PixelColor::ZERO, PixelColor::ZERO},
         {PixelColor::ONE, PixelColor::ZERO}};
-    const image diagonalBottomRightImage = {
+    const Image diagonalBottomRightImage = {
         {PixelColor::ZERO, PixelColor::ZERO},
         {PixelColor::ZERO, PixelColor::ONE}};
+    const Image verticalLargeImage = {
+        {PixelColor::ONE, PixelColor::ONE, PixelColor::ZERO},
+        {PixelColor::ONE, PixelColor::ONE, PixelColor::ZERO},
+        {PixelColor::ONE, PixelColor::ONE, PixelColor::ZERO}};
+
+    const Image largeImage = {
+        {PixelColor::ONE, PixelColor::ONE, PixelColor::ONE, PixelColor::ZERO},
+        {PixelColor::ONE, PixelColor::ONE, PixelColor::ZERO, PixelColor::ZERO},
+        {PixelColor::ONE, PixelColor::ZERO, PixelColor::ZERO, PixelColor::ZERO},
+        {PixelColor::ZERO, PixelColor::ZERO, PixelColor::ZERO, PixelColor::ZERO}};
 
     // points
     const Points default_point = {{-1, -1}};
@@ -90,6 +100,12 @@ struct Tests : public ::testing::Test
         {1, 0}};
     const Points diagonalBottomRightPoints = {
         {1, 1}};
+
+    const Points verticalLargePoints = {
+        {0, 1}, {2, 1}};
+
+    const Points largePoints = {
+        {0, 2}, {2, 0}};
 };
 
 TEST_F(Tests, LineEquationInImageTest)
@@ -119,8 +135,31 @@ TEST_F(Tests, LineEquationInImageTest)
     EXPECT_EQ(diagonalBottomLeftPoints, find_line_in_image(diagonalBottomLeftImage));
     // 1s on the bottom right
     EXPECT_EQ(diagonalBottomRightPoints, find_line_in_image(diagonalBottomRightImage));
+
+    EXPECT_EQ(verticalLargePoints, find_line_in_image(verticalLargeImage));
+
+    EXPECT_EQ(largePoints, find_line_in_image(largeImage));
 }
 
 TEST(BasicFunctions, BasicFunctions)
 {
+    std::vector<PixelColor> v1 = {PixelColor::ONE, PixelColor::ZERO};
+
+    EXPECT_EQ(0, search_for_point_in_1d_line(v1));
+
+    std::vector<std::vector<PixelColor>> v2 = {
+        {PixelColor::ONE},
+        {PixelColor::ZERO}};
+
+    // auto getValue = [&](int i)
+    // {
+    //     return v2[i][0];
+    // };
+
+    // auto mapIndex = [&](int i)
+    // {
+    //     return std::make_pair(i, 0);
+    // };
+
+    // EXPECT_EQ(std::make_pair(0, 0), search_for_point_in_line<Point>(v2.size(), getValue, mapIndex)) << v2.size();
 }

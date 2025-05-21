@@ -8,7 +8,7 @@ enum PixelColor
     ONE
 };
 
-using image = std::vector<std::vector<PixelColor>>;
+using Image = std::vector<std::vector<PixelColor>>;
 using Point = std::pair<int, int>;
 using Points = std::vector<Point>;
 
@@ -20,12 +20,14 @@ enum Edge
     RIGHT
 };
 
-const Point find_point_in_edge(const image &img, const Edge edge);
+const Point find_point_in_edge(const Image &img, const Edge edge);
 
-const Points find_line_in_image(const image &img);
+const Points find_line_in_image(const Image &img);
 
 template <
     typename ReturnType,
     typename GetValueFunc,
     typename IndexMapper>
 ReturnType search_for_point_in_line(const int length, GetValueFunc getValue, IndexMapper mapIndex);
+
+int search_for_point_in_1d_line(std::vector<PixelColor> line);
