@@ -68,27 +68,27 @@ struct Tests : public ::testing::Test
         {PixelColor::ZERO, PixelColor::ONE}};
 
     // points
-    const points default_point = {{-1, -1}};
+    const Points default_point = {{-1, -1}};
 
-    const points verticalLeftPoints = {
+    const Points verticalLeftPoints = {
         {0, 0}, {1, 0}};
 
-    const points verticalRightPoints = {
+    const Points verticalRightPoints = {
         {0, 1}, {1, 1}};
 
-    const points horizontalTopPoints = {
+    const Points horizontalTopPoints = {
         {0, 0}, {0, 1}};
 
-    const points horizontalBottomPoints = {
+    const Points horizontalBottomPoints = {
         {1, 0}, {1, 1}};
 
-    const points diagonalTopLeftPoints = {
+    const Points diagonalTopLeftPoints = {
         {0, 0}};
-    const points diagonalTopRightPoints = {
+    const Points diagonalTopRightPoints = {
         {0, 1}};
-    const points diagonalBottomLeftPoints = {
+    const Points diagonalBottomLeftPoints = {
         {1, 0}};
-    const points diagonalBottomRightPoints = {
+    const Points diagonalBottomRightPoints = {
         {1, 1}};
 };
 
@@ -119,4 +119,8 @@ TEST_F(Tests, LineEquationInImageTest)
     EXPECT_EQ(diagonalBottomLeftPoints, find_line_in_image(diagonalBottomLeftImage));
     // 1s on the bottom right
     EXPECT_EQ(diagonalBottomRightPoints, find_line_in_image(diagonalBottomRightImage));
+}
+
+TEST(BasicFunctions, BasicFunctions)
+{
 }
