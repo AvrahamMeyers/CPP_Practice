@@ -17,8 +17,26 @@ using namespace ::testing;
 struct Tests : public ::testing::Test
 {
     // images
-    const image all_1s = {{1, 1}, {1, 1}};
-    const image all_0s = {{0, 0}, {0, 0}};
+
+    // Edge cases:
+    // image has 1 pixel
+    const image one_pixel_1 = {{1}};
+    const image one_pixel_0 = {{0}};
+
+    // image is a single row
+    const image single_row = {{1, 0}};
+
+    // image is a single column
+    const image single_col = {
+        {1},
+        {0}};
+
+    const image all_1s = {
+        {1, 1},
+        {1, 1}};
+    const image all_0s = {
+        {0, 0},
+        {0, 0}};
 
     const image verticalLeftImage = {
         {1, 0},
