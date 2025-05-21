@@ -1,4 +1,3 @@
-
 # build artifacts and folders
 /build/
 /.vscode/
@@ -7,9 +6,4 @@
 # executables
 *.exe
 
-# common backup and temp files
-*~
-*.swp
-*.bak
-.DS_Store
-Thumbs.db
+!/test/
