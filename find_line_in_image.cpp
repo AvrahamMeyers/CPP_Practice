@@ -5,6 +5,8 @@
 
 #include "find_line_in_image.hpp"
 #include <optional>
+#include <cstdint>
+#include <map>
 
 // ** Type Definitions
 
@@ -36,15 +38,61 @@ const
 
     // need to find the two sides whose corners differ in color
 
-    std::optional<std::array<int, 2>> first_point, second_point;
+    std::map<Edge, uint8_t> flags = {
+        {Edge::TOP, 0},
+        {Edge::LEFT, 0},
+        {Edge::RIGHT, 0},
+        {Edge::BOTTOM, 0}};
 
-    if (top_left != top_right)
+    const std::map<Edge, std::array<int, 2>> edges_to_corners = {
+        {Edge::TOP, {top_left, top_right}},
+        {Edge::LEFT, {top_left, bottom_left}},
+        {Edge::RIGHT, {top_right, bottom_right}},
+        {Edge::BOTTOM, {bottom_left, bottom_right}}};
+
+    for (auto &[edge, corner] : edges_to_corners)
     {
-        first_point = find_point_in_edge(img, Edge::TOP);
+        if (corner[0] != corner[1])
+        {
+            flags[edge] = 1;
+        }
     }
 
-    // default
-    return {{1, 1}};
+    std::optional<std::array<int, 2>> first_point, second_point;
+
+    for (auto &[edge, flag] : flags)
+    {
+        if (!flag)
+            continue;
+
+        auto point = find_point_in_edge(img, edge);
+
+        if (!first_point.has_value())
+        {
+            first_point = point;
+        }
+        else if (!second_point.has_value())
+        {
+            second_point = point;
+        }
+        else
+        {
+            break; // Stop after the two points are found
+        }
+    }
+
+    if (first_point && second_point)
+    {
+        return (first_point == second_point) ? std::vector{*first_point} : std::vector{*first_point, *second_point};
+    }
+    else if (first_point)
+    {
+        return std::vector{*first_point};
+    }
+    else
+    {
+        return {};
+    }
 }
 
 const point find_point_in_edge(const image &image, Edge edge)
