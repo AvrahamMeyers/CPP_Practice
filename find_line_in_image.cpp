@@ -17,9 +17,7 @@ const points find_line_in_image(const image &img)
     int bottom_left = img[length - 1][0];
     int bottom_right = img[length - 1][width - 1];
 
-    // TODO: check if the four corners are all the same color
-    // using xor does not work
-    if (((top_left + top_right + bottom_left + bottom_right) % 4) == 0)
+        if (((top_left + top_right + bottom_left + bottom_right) % 4) == 0)
     {
         return {{-1, -1}};
     }
