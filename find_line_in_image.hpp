@@ -14,6 +14,6 @@ enum Edge
     RIGHT
 };
 
-const point find_point_in_edge(const image &img, Edge edge);
+const point find_point_in_edge(const image &img, const Edge edge);
 
 const points find_line_in_image(const image &img);

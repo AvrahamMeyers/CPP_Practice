@@ -7,7 +7,10 @@
 
 // ** Type Definitions
 
-const points find_line_in_image(const image &img)
+const
+
+    const points
+    find_line_in_image(const image &img)
 {
     int length = img.size();
     int width = img[0].size();
@@ -30,6 +33,19 @@ const points find_line_in_image(const image &img)
     // high backward diagonal
     // low backward diagonal
 
+    // need to find the two sides whose corners differ in color
+
+    std::array<int, 2> first_point, second_point;
+
+    if (top_left != top_right)
+    {
+        first_point = find_point_in_edge(img, Edge::TOP);
+    }
+
     // default
     return {{1, 1}};
+}
+
+const point find_point_in_edge(const image &image, Edge edge)
+{
 }
