@@ -4,6 +4,7 @@
 #include <array>
 
 #include "find_line_in_image.hpp"
+#include <optional>
 
 // ** Type Definitions
 
@@ -35,7 +36,7 @@ const
 
     // need to find the two sides whose corners differ in color
 
-    std::array<int, 2> first_point, second_point;
+    std::optional<std::array<int, 2>> first_point, second_point;
 
     if (top_left != top_right)
     {
