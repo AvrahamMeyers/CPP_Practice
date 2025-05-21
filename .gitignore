@@ -1,0 +1,15 @@
+
+# build artifacts and folders
+/build/
+/.vscode/
+/googletest/
+
+# executables
+*.exe
+
+# common backup and temp files
+*~
+*.swp
+*.bak
+.DS_Store
+Thumbs.db
