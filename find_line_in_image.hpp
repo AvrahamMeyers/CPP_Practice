@@ -2,15 +2,15 @@
 #include <vector>
 #include <functional>
 
-using image = std::vector<std::vector<int>>;
-using point = std::pair<int, int>;
-using points = std::vector<point>;
-
-enum PixelColors
+enum PixelColor
 {
     ZERO = 0,
     ONE
 };
+
+using image = std::vector<std::vector<PixelColor>>;
+using point = std::pair<int, int>;
+using points = std::vector<point>;
 
 enum Edge
 {

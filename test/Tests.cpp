@@ -20,52 +20,52 @@ struct Tests : public ::testing::Test
 
     // Edge cases:
     // image has 1 pixel
-    const image one_pixel_1 = {{1}};
-    const image one_pixel_0 = {{0}};
+    const image one_pixel_1 = {{PixelColor::ONE}};
+    const image one_pixel_0 = {{PixelColor::ZERO}};
 
     // image is a single row
-    const image single_row = {{1, 0}};
+    const image single_row = {{PixelColor::ONE, PixelColor::ZERO}};
 
     // image is a single column
     const image single_col = {
-        {1},
-        {0}};
+        {PixelColor::ONE},
+        {PixelColor::ZERO}};
 
     const image all_1s = {
-        {1, 1},
-        {1, 1}};
+        {PixelColor::ONE, PixelColor::ONE},
+        {PixelColor::ONE, PixelColor::ONE}};
     const image all_0s = {
-        {0, 0},
-        {0, 0}};
+        {PixelColor::ZERO, PixelColor::ZERO},
+        {PixelColor::ZERO, PixelColor::ZERO}};
 
     const image verticalLeftImage = {
-        {1, 0},
-        {1, 0}};
+        {PixelColor::ONE, PixelColor::ZERO},
+        {PixelColor::ONE, PixelColor::ZERO}};
 
     const image verticalRightImage = {
-        {0, 1},
-        {0, 1}};
+        {PixelColor::ZERO, PixelColor::ONE},
+        {PixelColor::ZERO, PixelColor::ONE}};
 
     const image horizontalTopImage = {
-        {1, 1},
-        {0, 0}};
+        {PixelColor::ONE, PixelColor::ONE},
+        {PixelColor::ZERO, PixelColor::ZERO}};
 
     const image horizontalBottomImage = {
-        {0, 0},
-        {1, 1}};
+        {PixelColor::ZERO, PixelColor::ZERO},
+        {PixelColor::ONE, PixelColor::ONE}};
 
     const image diagonalTopLeftImage = {
-        {1, 0},
-        {0, 0}};
+        {PixelColor::ONE, PixelColor::ZERO},
+        {PixelColor::ZERO, PixelColor::ZERO}};
     const image diagonalTopRightImage = {
-        {0, 1},
-        {0, 0}};
+        {PixelColor::ZERO, PixelColor::ONE},
+        {PixelColor::ZERO, PixelColor::ZERO}};
     const image diagonalBottomLeftImage = {
-        {0, 0},
-        {1, 0}};
+        {PixelColor::ZERO, PixelColor::ZERO},
+        {PixelColor::ONE, PixelColor::ZERO}};
     const image diagonalBottomRightImage = {
-        {0, 0},
-        {0, 1}};
+        {PixelColor::ZERO, PixelColor::ZERO},
+        {PixelColor::ZERO, PixelColor::ONE}};
 
     // points
     const points default_point = {{-1, -1}};
