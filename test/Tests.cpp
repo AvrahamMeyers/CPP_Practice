@@ -70,7 +70,10 @@ struct Tests : public ::testing::Test
         {PixelColor::ONE, PixelColor::ONE, PixelColor::ZERO},
         {PixelColor::ONE, PixelColor::ONE, PixelColor::ZERO},
         {PixelColor::ONE, PixelColor::ONE, PixelColor::ZERO}};
-
+    const Image horizontalLargeImage = {
+        {PixelColor::ONE, PixelColor::ONE, PixelColor::ONE},
+        {PixelColor::ONE, PixelColor::ONE, PixelColor::ONE},
+        {PixelColor::ZERO, PixelColor::ZERO, PixelColor::ZERO}};
     const Image largeImage = {
         {PixelColor::ONE, PixelColor::ONE, PixelColor::ONE, PixelColor::ZERO},
         {PixelColor::ONE, PixelColor::ONE, PixelColor::ZERO, PixelColor::ZERO},
@@ -103,6 +106,9 @@ struct Tests : public ::testing::Test
 
     const Points verticalLargePoints = {
         {0, 1}, {2, 1}};
+
+    const Points horizontalLargePoints = {
+        {1, 0}, {1, 2}};
 
     const Points largePoints = {
         {0, 2}, {2, 0}};
@@ -138,6 +144,8 @@ TEST_F(Tests, LineEquationInImageTest)
 
     EXPECT_EQ(verticalLargePoints, find_line_in_image(verticalLargeImage));
 
+    EXPECT_EQ(horizontalLargePoints, find_line_in_image(horizontalLargeImage));
+
     EXPECT_EQ(largePoints, find_line_in_image(largeImage));
 }
 
@@ -146,20 +154,4 @@ TEST(BasicFunctions, BasicFunctions)
     std::vector<PixelColor> v1 = {PixelColor::ONE, PixelColor::ZERO};
 
     EXPECT_EQ(0, search_for_point_in_1d_line(v1));
-
-    std::vector<std::vector<PixelColor>> v2 = {
-        {PixelColor::ONE},
-        {PixelColor::ZERO}};
-
-    // auto getValue = [&](int i)
-    // {
-    //     return v2[i][0];
-    // };
-
-    // auto mapIndex = [&](int i)
-    // {
-    //     return std::make_pair(i, 0);
-    // };
-
-    // EXPECT_EQ(std::make_pair(0, 0), search_for_point_in_line<Point>(v2.size(), getValue, mapIndex)) << v2.size();
 }
