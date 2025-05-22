@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <map>
 #include "find_line_in_image.hpp"
+#include <stdexcept>
 
 const Points find_line_in_image(const Image &img)
 {
@@ -89,13 +90,39 @@ const Points find_line_in_image(const Image &img)
         return {};
     }
 }
-
+/**
+ * @brief Searches a 1D sequence for the crossing point from ONEs to ZEROs
+ *
+ * Iterates over a line (1D range of indices) of a given length,
+ * using the provided `getValue` function to evaluate each point and
+ * `mapIndex` to translate logical indices to physical or transformed indices.
+ *
+ * The function is generic over the return type and the logic used to access
+ * and interpret each point in the line.
+ *
+ * @tparam ReturnType The return type of the function (e.g., int or Point (std::pair<int, int>)).
+ * @tparam GetValueFunc A callable that takes an integer index and returns the value at that logical index.
+ * @tparam IndexMapper A callable that maps logical indices (0 to length-1) to actual indices of the underlying data structure.
+ *
+ * @param length The number of elements to search through.
+ * @param getValue A function or lambda that takes an index and returns the value at that index.
+ * @param mapIndex A function or lambda that maps a logical index to the actual data index.
+ *
+ * @return ReturnType The index of the first ONE next to a ZERO in the line.
+ *
+ * @throws invalid_argument: if length == 0.
+ */
 template <
     typename ReturnType,
     typename GetValueFunc,
     typename IndexMapper>
 ReturnType search_for_point_in_line(const int length, GetValueFunc getValue, IndexMapper mapIndex)
 {
+    if (length == 0)
+    {
+        throw std::invalid_argument("length of line is 0");
+    }
+
     if (length == 1)
     {
         PixelColor value = getValue(0);
@@ -104,7 +131,7 @@ ReturnType search_for_point_in_line(const int length, GetValueFunc getValue, Ind
             return mapIndex(0);
         }
         else
-        {
+        { // line has a single element in it, the value zero
             if constexpr (std::is_same_v<ReturnType, int>)
                 return -1;
             else if constexpr (std::is_same_v<ReturnType, std::pair<int, int>>)
@@ -144,6 +171,10 @@ ReturnType search_for_point_in_line(const int length, GetValueFunc getValue, Ind
 
 int search_for_point_in_1d_line(std::vector<PixelColor> line)
 {
+    if (line.size() == 0)
+    {
+        throw std::invalid_argument("vector is empty");
+    }
 
     auto getValue = [&](int i)
     { return line[i]; };
@@ -156,7 +187,18 @@ int search_for_point_in_1d_line(std::vector<PixelColor> line)
 float calculate_slope(Point point1, Point point2)
 {
     int rise = point1.second - point2.second;
+
+    if (rise == 0)
+    {
+        return 0.0f;
+    }
+
     int run = point1.first - point2.first;
+
+    if (run == 0)
+    {
+        throw std::invalid_argument("line is vertical, slope is undefined");
+    }
     return static_cast<float>(rise / run);
 }
 
@@ -199,6 +241,10 @@ const Point find_point_in_edge(const Image &img, Edge edge)
         auto mapIndex = [&](int i)
         { return std::make_pair(i, img[0].size() - 1); };
         return search_for_point_in_line<Point>(length, getValue, mapIndex);
+    }
+    default:
+    {
+        throw std::invalid_argument("no edge provided");
     }
     }
 }
