@@ -119,3 +119,11 @@ bool check_all_corners_for_identical_color(const Image &img);
  * @return A map of edges to flags (0 or 1).
  */
 std::map<Edge, uint8_t> generate_flags_for_edges(const Image &img);
+
+/**
+ * @brief Displays the line function and point.
+ *
+ * @param point The point to display.
+ * @param slope The slope of the line.
+ */
+void display_line_function(const Point &point, float slope);

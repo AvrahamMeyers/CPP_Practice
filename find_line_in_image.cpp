@@ -228,6 +228,12 @@ std::map<Edge, uint8_t> generate_flags_for_edges(const Image &img)
     return flags;
 }
 
+void display_line_function(const Point &point, float slope)
+{
+    printf("Line function: y = %.2fx + %.2f\n", slope, point.second - slope * point.first);
+    printf("Point: (%d, %d)\n", point.first, point.second);
+}
+
 Point find_point_in_edge(const Image &img, Edge edge)
 {
     switch (edge)
