@@ -18,6 +18,22 @@ Points find_line_in_image(const Image &img)
 
     std::map<Edge, uint8_t> flags = generate_flags_for_edges(img);
 
+    // check that there are exactly two edges with different colors
+    int count = 0;
+
+    for (auto &[edge, flag] : flags)
+    {
+        if (flag)
+        {
+            count++;
+        }
+    }
+
+    if (count != 2)
+    {
+        throw std::invalid_argument("image does not have exactly two edges with different colors");
+    }
+
     std::optional<Point> first_point, second_point;
 
     for (auto &[edge, flag] : flags)
@@ -87,6 +103,7 @@ ReturnType search_for_point_in_line(int length, GetValueFunc getValue, IndexMapp
     int left_value = getValue(left);
     int right_value = getValue(right);
 
+    // binary search for the first ONE next to a ZERO
     while (left < right - 1)
     {
         int mid = (left + right) / 2;
@@ -104,10 +121,14 @@ ReturnType search_for_point_in_line(int length, GetValueFunc getValue, IndexMapp
         }
     }
 
+    // after the loop, left and right are adjacent
+    // one of them is a ONE and the other is a ZERO
+    // if the left value is a ONE, then return the left index
     if (left_value == PixelColor::ONE)
     {
         return mapIndex(left);
     }
+    // otherwise, return the right index
     else
         return mapIndex(right);
 }
