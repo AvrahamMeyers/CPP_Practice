@@ -31,3 +31,5 @@ template <
 ReturnType search_for_point_in_line(const int length, GetValueFunc getValue, IndexMapper mapIndex);
 
 int search_for_point_in_1d_line(std::vector<PixelColor> line);
+
+float calculate_slope(Point point1, Point point2);

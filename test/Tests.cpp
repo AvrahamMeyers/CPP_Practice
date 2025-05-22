@@ -151,7 +151,13 @@ TEST_F(Tests, LineEquationInImageTest)
 
 TEST(BasicFunctions, BasicFunctions)
 {
+    // 1d test for search for point in line
     std::vector<PixelColor> v1 = {PixelColor::ONE, PixelColor::ZERO};
 
     EXPECT_EQ(0, search_for_point_in_1d_line(v1));
+
+    // test slope function
+    Point p1 = {0, 0}, p2 = {1, 1};
+
+    EXPECT_FLOAT_EQ(1.0f, calculate_slope(p1, p2));
 }

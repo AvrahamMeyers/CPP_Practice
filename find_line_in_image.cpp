@@ -2,13 +2,10 @@
 #include <cstdio>
 #include <cstdlib>
 #include <array>
-
-#include "find_line_in_image.hpp"
 #include <optional>
 #include <cstdint>
 #include <map>
-
-// ** Type Definitions
+#include "find_line_in_image.hpp"
 
 const Points find_line_in_image(const Image &img)
 {
@@ -20,20 +17,18 @@ const Points find_line_in_image(const Image &img)
     int bottom_left = img[length - 1][0];
     int bottom_right = img[length - 1][width - 1];
 
+    // check if the corners all are the same color
+    // if they are then the entire image is that color
+    // the sum of the corners is either 0,1,2,3,4
+    // if the corners are all zero, then the sum is 0, if 1 then the sum is 4
+    // 0 % 4 and 4 % 4 both equal 0
+    // 1 % 4 = 1, 2 % 4 = 2, 3 % 4 = 3
     if (((top_left + top_right + bottom_left + bottom_right) % 4) == 0)
     {
         return {{-1, -1}};
     }
 
-    // six options for how the line can cross the image
-    // vertically
-    // horizontally
-    // high forward diagonal
-    // low forward diagonal
-    // high backward diagonal
-    // low backward diagonal
-
-    // need to find the two sides whose corners differ in color
+    // find the two sides whose corners differ in color
 
     std::map<Edge, uint8_t> flags = {
         {Edge::TOP, 0},
@@ -47,9 +42,12 @@ const Points find_line_in_image(const Image &img)
         {Edge::RIGHT, {top_right, bottom_right}},
         {Edge::BOTTOM, {bottom_left, bottom_right}}};
 
-    for (auto &[edge, corner] : edges_to_corners)
+    // determining which edges contain the line
+    // calculated by checking if the two corners of the edge
+    // differ in color
+    for (auto &[edge, corners] : edges_to_corners)
     {
-        if (corner[0] != corner[1])
+        if (corners[0] != corners[1])
         {
             flags[edge] = 1;
         }
@@ -73,7 +71,7 @@ const Points find_line_in_image(const Image &img)
             second_point = point;
         }
         else
-        {
+        { // both points found
             break;
         }
     }
@@ -153,6 +151,13 @@ int search_for_point_in_1d_line(std::vector<PixelColor> line)
     { return i; };
 
     return search_for_point_in_line<int>(line.size(), getValue, mapIndex);
+}
+
+float calculate_slope(Point point1, Point point2)
+{
+    int rise = point1.second - point2.second;
+    int run = point1.first - point2.first;
+    return static_cast<float>(rise / run);
 }
 
 const Point find_point_in_edge(const Image &img, Edge edge)
