@@ -129,6 +129,14 @@ int search_for_point_in_1d_line(std::vector<PixelColor> line)
 
 float calculate_slope(Point point1, Point point2)
 {
+    int run = point1.first - point2.first;
+
+    // check if the line is vertical
+    if (run == 0)
+    {
+        throw std::invalid_argument("line is vertical, slope is undefined");
+    }
+
     int rise = point1.second - point2.second;
 
     if (rise == 0)
@@ -136,12 +144,6 @@ float calculate_slope(Point point1, Point point2)
         return 0.0f;
     }
 
-    int run = point1.first - point2.first;
-
-    if (run == 0)
-    {
-        throw std::invalid_argument("line is vertical, slope is undefined");
-    }
     return static_cast<float>(rise / run);
 }
 
