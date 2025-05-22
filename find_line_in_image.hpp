@@ -123,7 +123,8 @@ std::map<Edge, uint8_t> generate_flags_for_edges(const Image &img);
 /**
  * @brief Displays the line function and point.
  *
- * @param point The point to display.
- * @param slope The slope of the line.
+ * @param point1 The first point.
+ * @param point2 The second point.
+ * @return void
  */
-void display_line_function(const Point &point, float slope);
+void display_line_function(const Point &point1, const Point &point2);

@@ -228,10 +228,28 @@ std::map<Edge, uint8_t> generate_flags_for_edges(const Image &img)
     return flags;
 }
 
-void display_line_function(const Point &point, float slope)
+void display_line_function(const Point &point1, const Point &point2)
 {
-    printf("Line function: y = %.2fx + %.2f\n", slope, point.second - slope * point.first);
+    if (point1 == point2)
+    {
+        printf("Line function: y = 0\n");
+        printf("Point: (%d, %d)\n", point1.first, point1.second);
+        return;
+    }
+
+    float slope = calculate_slope(point1, point2);
+
+    // display the line function
+    // find the point with the smaller x coordinate
+    auto point = point1.first < point2.first ? point1 : point2;
+
+    // y = mx + b
+    // b = y - mx
+
+    float b = point.second - slope * point.first;
+    printf("Line function: y = %.2fx + %.2f\n", slope, b);
     printf("Point: (%d, %d)\n", point.first, point.second);
+    printf("Slope: %.2f\n", slope);
 }
 
 Point find_point_in_edge(const Image &img, Edge edge)
