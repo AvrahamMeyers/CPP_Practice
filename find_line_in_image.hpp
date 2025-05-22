@@ -20,16 +20,18 @@ enum Edge
     RIGHT
 };
 
-const Point find_point_in_edge(const Image &img, const Edge edge);
+Point find_point_in_edge(const Image &img, Edge edge);
 
-const Points find_line_in_image(const Image &img);
+Points find_line_in_image(const Image &img);
 
 template <
     typename ReturnType,
     typename GetValueFunc,
     typename IndexMapper>
-ReturnType search_for_point_in_line(const int length, GetValueFunc getValue, IndexMapper mapIndex);
+ReturnType search_for_point_in_line(int length, GetValueFunc getValue, IndexMapper mapIndex);
 
 int search_for_point_in_1d_line(std::vector<PixelColor> line);
 
 float calculate_slope(Point point1, Point point2);
+
+bool check_all_corners_for_identical_color(const Image &img);

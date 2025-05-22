@@ -8,8 +8,14 @@
 #include "find_line_in_image.hpp"
 #include <stdexcept>
 
-const Points find_line_in_image(const Image &img)
+Points find_line_in_image(const Image &img)
 {
+    // check if the corners all are the same color
+    if (check_all_corners_for_identical_color(img))
+    {
+        return {{-1, -1}};
+    }
+
     int length = img.size();
     int width = img[0].size();
 
@@ -17,17 +23,6 @@ const Points find_line_in_image(const Image &img)
     int top_right = img[0][width - 1];
     int bottom_left = img[length - 1][0];
     int bottom_right = img[length - 1][width - 1];
-
-    // check if the corners all are the same color
-    // if they are then the entire image is that color
-    // the sum of the corners is either 0,1,2,3,4
-    // if the corners are all zero, then the sum is 0, if 1 then the sum is 4
-    // 0 % 4 and 4 % 4 both equal 0
-    // 1 % 4 = 1, 2 % 4 = 2, 3 % 4 = 3
-    if (((top_left + top_right + bottom_left + bottom_right) % 4) == 0)
-    {
-        return {{-1, -1}};
-    }
 
     // find the two sides whose corners differ in color
 
@@ -116,7 +111,7 @@ template <
     typename ReturnType,
     typename GetValueFunc,
     typename IndexMapper>
-ReturnType search_for_point_in_line(const int length, GetValueFunc getValue, IndexMapper mapIndex)
+ReturnType search_for_point_in_line(int length, GetValueFunc getValue, IndexMapper mapIndex)
 {
     if (length == 0)
     {
@@ -202,7 +197,29 @@ float calculate_slope(Point point1, Point point2)
     return static_cast<float>(rise / run);
 }
 
-const Point find_point_in_edge(const Image &img, Edge edge)
+bool check_all_corners_for_identical_color(const Image &img)
+{
+    int length = img.size();
+    int width = img[0].size();
+
+    int top_left = img[0][0];
+    int top_right = img[0][width - 1];
+    int bottom_left = img[length - 1][0];
+    int bottom_right = img[length - 1][width - 1];
+
+    // check if the corners all are the same color
+    // the sum of the corners is either 0,1,2,3,4
+    // if the corners are all zero, then the sum is 0, if 1 then the sum is 4
+    // 0 % 4 and 4 % 4 both equal 0
+    // 1 % 4 = 1, 2 % 4 = 2, 3 % 4 = 3
+    if (((top_left + top_right + bottom_left + bottom_right) % 4) == 0)
+    {
+        return true;
+    }
+    return false;
+}
+
+Point find_point_in_edge(const Image &img, Edge edge)
 {
     switch (edge)
     {
