@@ -54,28 +54,7 @@ Points find_line_in_image(const Image &img)
         return {};
     }
 }
-/**
- * @brief Searches a 1D sequence for the crossing point from ONEs to ZEROs
- *
- * Iterates over a line (1D range of indices) of a given length,
- * using the provided `getValue` function to evaluate each point and
- * `mapIndex` to translate logical indices to physical or transformed indices.
- *
- * The function is generic over the return type and the logic used to access
- * and interpret each point in the line.
- *
- * @tparam ReturnType The return type of the function (e.g., int or Point (std::pair<int, int>)).
- * @tparam GetValueFunc A callable that takes an integer index and returns the value at that logical index.
- * @tparam IndexMapper A callable that maps logical indices (0 to length-1) to actual indices of the underlying data structure.
- *
- * @param length The number of elements to search through.
- * @param getValue A function or lambda that takes an index and returns the value at that index.
- * @param mapIndex A function or lambda that maps a logical index to the actual data index.
- *
- * @return ReturnType The index of the first ONE next to a ZERO in the line.
- *
- * @throws invalid_argument: if length == 0.
- */
+
 template <
     typename ReturnType,
     typename GetValueFunc,
