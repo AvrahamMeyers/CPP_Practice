@@ -99,6 +99,8 @@ int search_for_point_in_1d_line(std::vector<PixelColor> line);
  * @param point1 The first point.
  * @param point2 The second point.
  * @return The slope between the two points.
+ *
+ * @throws invalid_argument: if the line is vertical (undefined slope).
  */
 float calculate_slope(Point point1, Point point2);
 
