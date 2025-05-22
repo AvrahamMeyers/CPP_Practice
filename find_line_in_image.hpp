@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include <functional>
+#include <map>
+#include <cstdint>
 
 enum PixelColor
 {
@@ -35,3 +37,5 @@ int search_for_point_in_1d_line(std::vector<PixelColor> line);
 float calculate_slope(Point point1, Point point2);
 
 bool check_all_corners_for_identical_color(const Image &img);
+
+std::map<Edge, uint8_t> generate_flags_for_edges(const Image &img);

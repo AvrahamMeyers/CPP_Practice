@@ -16,38 +16,7 @@ Points find_line_in_image(const Image &img)
         return {{-1, -1}};
     }
 
-    int length = img.size();
-    int width = img[0].size();
-
-    int top_left = img[0][0];
-    int top_right = img[0][width - 1];
-    int bottom_left = img[length - 1][0];
-    int bottom_right = img[length - 1][width - 1];
-
-    // find the two sides whose corners differ in color
-
-    std::map<Edge, uint8_t> flags = {
-        {Edge::TOP, 0},
-        {Edge::LEFT, 0},
-        {Edge::RIGHT, 0},
-        {Edge::BOTTOM, 0}};
-
-    const std::map<Edge, std::array<int, 2>> edges_to_corners = {
-        {Edge::TOP, {top_left, top_right}},
-        {Edge::LEFT, {top_left, bottom_left}},
-        {Edge::RIGHT, {top_right, bottom_right}},
-        {Edge::BOTTOM, {bottom_left, bottom_right}}};
-
-    // determining which edges contain the line
-    // calculated by checking if the two corners of the edge
-    // differ in color
-    for (auto &[edge, corners] : edges_to_corners)
-    {
-        if (corners[0] != corners[1])
-        {
-            flags[edge] = 1;
-        }
-    }
+    std::map<Edge, uint8_t> flags = generate_flags_for_edges(img);
 
     std::optional<Point> first_point, second_point;
 
@@ -217,6 +186,44 @@ bool check_all_corners_for_identical_color(const Image &img)
         return true;
     }
     return false;
+}
+
+std::map<Edge, uint8_t> generate_flags_for_edges(const Image &img)
+{
+    int length = img.size();
+    int width = img[0].size();
+
+    int top_left = img[0][0];
+    int top_right = img[0][width - 1];
+    int bottom_left = img[length - 1][0];
+    int bottom_right = img[length - 1][width - 1];
+
+    // find the two sides whose corners differ in color
+
+    std::map<Edge, uint8_t> flags = {
+        {Edge::TOP, 0},
+        {Edge::LEFT, 0},
+        {Edge::RIGHT, 0},
+        {Edge::BOTTOM, 0}};
+
+    const std::map<Edge, std::array<int, 2>> edges_to_corners = {
+        {Edge::TOP, {top_left, top_right}},
+        {Edge::LEFT, {top_left, bottom_left}},
+        {Edge::RIGHT, {top_right, bottom_right}},
+        {Edge::BOTTOM, {bottom_left, bottom_right}}};
+
+    // determining which edges contain the line
+    // calculated by checking if the two corners of the edge
+    // differ in color
+    for (auto &[edge, corners] : edges_to_corners)
+    {
+        if (corners[0] != corners[1])
+        {
+            flags[edge] = 1;
+        }
+    }
+
+    return flags;
 }
 
 Point find_point_in_edge(const Image &img, Edge edge)
