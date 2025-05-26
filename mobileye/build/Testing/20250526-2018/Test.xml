@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20250526-2018-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.31.5"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Windows"
+	Hostname="Avrahams-Dell"
+	OSRelease=" Professional"
+	OSVersion=" (Build 9200)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString=""
+	VendorID="Unknown Manufacturer"
+	FamilyID="0"
+	ModelID="0"
+	ModelName=""
+	ProcessorCacheSize="0"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="15934"
+	TotalPhysicalMemory="7967"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="1896"
+	>
+	<Testing>
+		<StartDateTime>May 26 23:18 Jerusalem Daylight Time</StartDateTime>
+		<StartTestTime>1748290711</StartTestTime>
+		<TestList/>
+		<EndDateTime>May 26 23:18 Jerusalem Daylight Time</EndDateTime>
+		<EndTestTime>1748290711</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

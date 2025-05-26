@@ -1,0 +1,5 @@
+add_test([=[Tests.LineEquationInImageTest]=]  C:/Users/a3210/practice/build/test/Tests.exe [==[--gtest_filter=Tests.LineEquationInImageTest]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[Tests.LineEquationInImageTest]=]  PROPERTIES WORKING_DIRECTORY C:/Users/a3210/practice/build/test SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[BasicFunctions.BasicFunctions]=]  C:/Users/a3210/practice/build/test/Tests.exe [==[--gtest_filter=BasicFunctions.BasicFunctions]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[BasicFunctions.BasicFunctions]=]  PROPERTIES WORKING_DIRECTORY C:/Users/a3210/practice/build/test SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  Tests_TESTS Tests.LineEquationInImageTest BasicFunctions.BasicFunctions)

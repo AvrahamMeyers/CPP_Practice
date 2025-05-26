@@ -1,0 +1,94 @@
+Start testing: May 20 23:31 Jerusalem Daylight Time
+----------------------------------------------------------
+2/2 Testing: Tests.LineEquationInImageTest
+2/2 Test: Tests.LineEquationInImageTest
+Command: "C:/Users/a3210/practice/build/test/Tests.exe" "--gtest_filter=Tests.LineEquationInImageTest" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/a3210/practice/build/test
+"Tests.LineEquationInImageTest" start time: May 20 23:31 Jerusalem Daylight Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Users\a3210\practice\googletest\googletest\src\gtest_main.cc
+Note: Google Test filter = Tests.LineEquationInImageTest
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Tests
+[ RUN      ] Tests.LineEquationInImageTest
+C:\Users\a3210\practice\test\Tests.cpp:79: Failure
+Expected equality of these values:
+  true
+  false
+
+image is entirely 0s
+image is entirely 1s
+image is entirely 1s
+C:\Users\a3210\practice\test\Tests.cpp:87: Failure
+Expected equality of these values:
+  verticalLeftPoints
+    Which is: { { 0, 0 }, { 1, 0 } }
+  find_line_in_image(verticalLeftImage)
+    Which is: { { -1, -1 } }
+
+image is entirely 0s
+C:\Users\a3210\practice\test\Tests.cpp:89: Failure
+Expected equality of these values:
+  verticalRightPoints
+    Which is: { { 0, 1 }, { 1, 1 } }
+  find_line_in_image(verticalRightImage)
+    Which is: { { -1, -1 } }
+
+image is entirely 1s
+C:\Users\a3210\practice\test\Tests.cpp:93: Failure
+Expected equality of these values:
+  horizontalTopPoints
+    Which is: { { 0, 0 }, { 0, 1 } }
+  find_line_in_image(horizontalTopImage)
+    Which is: { { -1, -1 } }
+
+image is entirely 0s
+C:\Users\a3210\practice\test\Tests.cpp:95: Failure
+Expected equality of these values:
+  horizontalBottomPoints
+    Which is: { { 1, 0 }, { 1, 1 } }
+  find_line_in_image(horizontalBottomImage)
+    Which is: { { -1, -1 } }
+
+C:\Users\a3210\practice\test\Tests.cpp:99: Failure
+Expected equality of these values:
+  diagonalTopLeftPoints
+    Which is: { { 0, 0 } }
+  find_line_in_image(diagonalTopLeftImage)
+    Which is: { { 1, 1 } }
+
+C:\Users\a3210\practice\test\Tests.cpp:101: Failure
+Expected equality of these values:
+  diagonalTopRightPoints
+    Which is: { { 0, 1 } }
+  find_line_in_image(diagonalTopRightImage)
+    Which is: { { 1, 1 } }
+
+C:\Users\a3210\practice\test\Tests.cpp:103: Failure
+Expected equality of these values:
+  diagonalBottomLeftPoints
+    Which is: { { 1, 0 } }
+  find_line_in_image(diagonalBottomLeftImage)
+    Which is: { { 1, 1 } }
+
+[  FAILED  ] Tests.LineEquationInImageTest (1 ms)
+[----------] 1 test from Tests (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Tests.LineEquationInImageTest
+
+ 1 FAILED TEST
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Failed.
+"Tests.LineEquationInImageTest" end time: May 20 23:31 Jerusalem Daylight Time
+"Tests.LineEquationInImageTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 20 23:31 Jerusalem Daylight Time

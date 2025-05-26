@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20250520-1857-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.31.5"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Windows"
+	Hostname="Avrahams-Dell"
+	OSRelease=" Professional"
+	OSVersion=" (Build 9200)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString=""
+	VendorID="Unknown Manufacturer"
+	FamilyID="0"
+	ModelID="0"
+	ModelName=""
+	ProcessorCacheSize="0"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="17669"
+	TotalPhysicalMemory="7967"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="1896"
+	>
+	<Testing>
+		<StartDateTime>May 20 23:31 Jerusalem Daylight Time</StartDateTime>
+		<StartTestTime>1747773113</StartTestTime>
+		<TestList>
+			<Test>./test/Tests.LineEquationInImageTest</Test>
+		</TestList>
+		<Test Status="failed">
+			<Name>Tests.LineEquationInImageTest</Name>
+			<Path>./test</Path>
+			<FullName>./test/Tests.LineEquationInImageTest</FullName>
+			<FullCommandLine>C:\Users\a3210\practice\build\test\Tests.exe "--gtest_filter=Tests.LineEquationInImageTest" "--gtest_also_run_disabled_tests"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Failed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.0243141</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>C:\Users\a3210\practice\build\test\Tests.exe "--gtest_filter=Tests.LineEquationInImageTest" "--gtest_also_run_disabled_tests"</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value encoding="base64" compression="gzip">eJy1lVFv2jAQx9/9Ke4RJEDJqqkjUh+6jVZIqKqAag+AkBuOYMmxM9uh66Z+9zkORdCR4CDNecgRH//c786XG+dCMJFASplotWGtZArfovmTRqXn9OpTGMwzRWPDYpwnUiYcDWpzaGoVz5PCWhYavTgmD9JgBPfOBaZ2B9aMG1Rw437p3ogJHPzMqWFSDMUwpQkWG2R2s18LGO8iC8E4iSKyna1zZrBHZt39WsA9l8+Ul/sotkxJkaKwvmi6efbB+VDThURmMH56ALcWZ6KsSo/LRvnXOMui634Ed5TxXCEZ/MowNrgCtHqcmVeQazAb1AhbynPUEQEwKkd7W1OukRBWvA+YtjCGKeSvEOgTD8OKh55BfrluGOQWldWhfIRr8yiZsKkrcvZjw+KNjSGCP/YKOhDAW8daobPgreBiYrXkNqdLJpYu5tahmMtv+4RY12p0QydyOim+qE3r8R7dmCWbWtZwzxqeZ3VqF8L617V/1RB2IxX7LYWhfCozj8IGtbBHav+9sv3PF8N+lcbItJI3PDzIXryloBeyL13Tc7tiNJHCpd6jS6uQPqhUEu0T48sTBuHlQD696EFU34QXIDVtt/dYyuNSW6b6T+i/Qh5YM4C72+Fo8P3ssINWCKlun5mepRcYaRugTfzmskGquiv5Io6nftW0B0VF7/g9luLxdjIpKQLnq3vHbKVCBzjTRUWekcuXqAE+IVZi5zsdTKbkL581BZc=</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<EndDateTime>May 20 23:31 Jerusalem Daylight Time</EndDateTime>
+		<EndTestTime>1747773113</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

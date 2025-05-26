@@ -1,0 +1,30 @@
+Start testing: May 22 21:46 Jerusalem Daylight Time
+----------------------------------------------------------
+2/2 Testing: BasicFunctions.BasicFunctions
+2/2 Test: BasicFunctions.BasicFunctions
+Command: "C:/Users/a3210/practice/build/test/Tests.exe" "--gtest_filter=BasicFunctions.BasicFunctions" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/a3210/practice/build/test
+"BasicFunctions.BasicFunctions" start time: May 22 21:46 Jerusalem Daylight Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Users\a3210\practice\googletest\googletest\src\gtest_main.cc
+Note: Google Test filter = BasicFunctions.BasicFunctions
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BasicFunctions
+[ RUN      ] BasicFunctions.BasicFunctions
+[       OK ] BasicFunctions.BasicFunctions (0 ms)
+[----------] 1 test from BasicFunctions (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"BasicFunctions.BasicFunctions" end time: May 22 21:46 Jerusalem Daylight Time
+"BasicFunctions.BasicFunctions" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 22 21:46 Jerusalem Daylight Time

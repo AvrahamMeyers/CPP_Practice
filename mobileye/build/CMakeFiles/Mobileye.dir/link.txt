@@ -1,0 +1,2 @@
+C:\mingw-w64\mingw64\bin\ar.exe qc libMobileye.a CMakeFiles/Mobileye.dir/find_line_in_image.cpp.obj
+C:\mingw-w64\mingw64\bin\ranlib.exe libMobileye.a

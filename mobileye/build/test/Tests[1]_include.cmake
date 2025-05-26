@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/a3210/practice/build/test/Tests[1]_tests.cmake")
+  include("C:/Users/a3210/practice/build/test/Tests[1]_tests.cmake")
+else()
+  add_test(Tests_NOT_BUILT Tests_NOT_BUILT)
+endif()
