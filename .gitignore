@@ -3,8 +3,14 @@
 */.vscode/
 */googletest/
 
+# external dependencies, i.e. googletest, opencv
 */external/
 
+# opencv folders
+*/opencv*
+
+# png images
+*.png
 
 # executables
 *.exe

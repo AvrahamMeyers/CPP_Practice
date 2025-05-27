@@ -3,5 +3,8 @@
     "cmake.configureSettings": {
         "CMAKE_MAKE_PROGRAM": "C:/mingw-w64/mingw64/bin/ninja.exe"
             },
-    "cmake.sourceDirectory": "C:/Users/a3210/practice/shape_recognition"
+    "cmake.sourceDirectory": "C:/Users/a3210/practice/shape_recognition",
+    "files.associations": {
+        "vector": "cpp"
+    }
 }

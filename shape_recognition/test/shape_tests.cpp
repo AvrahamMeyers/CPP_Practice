@@ -1,4 +1,4 @@
-#include "shape_recognition.hpp"
+#include "../include/shape_recognition.hpp"
 #include <gtest/gtest.h>
 
 using namespace ::testing;
