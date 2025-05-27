@@ -1,7 +1,10 @@
 # build artifacts and folders
-/build/
-/.vscode/
-/googletest/
+*build/
+*/.vscode/
+*/googletest/
+
+*/external/
+
 
 # executables
 *.exe
