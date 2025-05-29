@@ -40,6 +40,4 @@ std::vector<cv::Point> get_triangle_points();
 
 void generate_triangles();
 
-void print_hello();
-
 int getRandomInt(int low, int high);

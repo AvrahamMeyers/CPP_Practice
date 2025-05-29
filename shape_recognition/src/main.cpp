@@ -5,6 +5,7 @@
 #include <random>
 #include <algorithm>
 #include "../include/shape_recognition.hpp"
+#include "../include/shape_generation.hpp"
 
 void generate_shapes()
 {
@@ -23,7 +24,7 @@ void generate_shapes()
 
 int main()
 {
-    print_hello();
+    printf("hello");
 
     return 0;
 }
