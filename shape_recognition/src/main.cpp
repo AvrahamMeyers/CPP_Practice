@@ -26,7 +26,7 @@ int main()
 {
     printf("hello\n");
 
-    int randomInt = get_random_int(1, 10);
+    int randomInt = 6;
 
     printf("random int: %d\n", randomInt);
 
