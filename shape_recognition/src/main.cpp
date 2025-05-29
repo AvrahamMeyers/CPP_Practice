@@ -24,7 +24,11 @@ void generate_shapes()
 
 int main()
 {
-    printf("hello");
+    printf("hello\n");
+
+    int randomInt = getRandomInt(1, 10);
+
+    printf("random int: %d\n", randomInt);
 
     return 0;
 }
