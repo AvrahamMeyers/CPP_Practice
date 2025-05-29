@@ -1,6 +1,4 @@
-#ifndef SHAPE_RECOGNITION_HPP
-#define SHAPE_RECOGNITION_HPP
-
+#pragma once
 #include <opencv2/opencv.hpp>
 
 enum Shape
@@ -32,5 +30,3 @@ std::vector<std::vector<cv::Point>> find_contours(cv::Mat img);
 cv::Mat highlight_contours(cv::Mat img, std::vector<std::vector<cv::Point>> contours);
 
 cv::Mat add_contours_to_image(const cv::Mat &shape);
-
-#endif

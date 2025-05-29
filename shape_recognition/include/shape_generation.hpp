@@ -1,5 +1,4 @@
-#ifndef SHAPE_GENERATION_HPP
-#define SHAPE_GENERATION_HPP
+#pragma once
 
 #include <opencv2/opencv.hpp>
 
@@ -20,4 +19,3 @@ void generate_triangles();
 void generate_rectangles();
 
 int get_random_int(int low, int high);
-#endif
