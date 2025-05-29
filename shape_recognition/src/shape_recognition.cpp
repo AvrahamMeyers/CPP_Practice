@@ -2,10 +2,17 @@
 #include <random>
 #include "../include/shape_recognition.hpp"
 
-void generate_circle()
+cv::Mat generate_basic_image()
 {
     int width = 200, height = 200;
     cv::Mat img(height, width, CV_8UC1, cv::Scalar(0));
+
+    return img;
+}
+
+void generate_circle()
+{
+    cv::Mat img = generate_basic_image();
 
     // Draw a white circle
     cv::circle(img, cv::Point(100, 100), 40, cv::Scalar(255), -1); // filled circle
@@ -41,22 +48,19 @@ cv::Mat highlight_contours(cv::Mat img, std::vector<std::vector<cv::Point>> cont
     return img;
 }
 
-void add_contours_to_image(std::string shapeName)
+void save_image_to_file(cv::Mat img, std::string shapeName, Shape shape)
 {
-    std::string image_path = "images/" + shapeName + ".png";
+    std::string image_path = "images/" + shape_to_folder_name(shape) + "/" + shapeName + ".png";
+    cv::imwrite(image_path, img);
+}
 
-    cv::Mat shape = load_image(image_path);
-
+cv::Mat add_contours_to_image(const cv::Mat &shape)
+{
     std::vector<std::vector<cv::Point>> contours = find_contours(shape);
 
     cv::Mat new_img = highlight_contours(shape, contours);
 
-    cv::imwrite("images/new_" + shapeName + ".png", new_img);
-}
-
-int generate_random_number(int low, int high)
-{
-    // TODO: implement random generator for given range
+    return new_img;
 }
 
 cv::Point generate_point()
@@ -97,8 +101,7 @@ void generate_triangles()
 {
     for (int i = 0; i < 10; ++i)
     {
-        int width = 200, height = 200;
-        cv::Mat img(height, width, CV_8UC1, cv::Scalar(0));
+        cv::Mat img = generate_basic_image();
         std::vector<cv::Point> triangle = get_triangle_points();
 
         cv::fillConvexPoly(img, triangle, cv::Scalar(255));
@@ -113,8 +116,17 @@ void generate_rectangles()
 {
     for (int i = 0; i < 10; ++i)
     {
-        // TODO: implement generate rectangle logic
+        cv::Mat img = generate_basic_image();
     }
+}
+
+int getRandomInt(int low, int high)
+{
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+
+    std::uniform_int_distribution<> dist(low, high);
+    return dist(gen);
 }
 
 void print_hello()
