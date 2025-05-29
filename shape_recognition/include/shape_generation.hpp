@@ -19,5 +19,5 @@ void generate_triangles();
 
 void generate_rectangles();
 
-int getRandomInt(int low, int high);
+int get_random_int(int low, int high);
 #endif

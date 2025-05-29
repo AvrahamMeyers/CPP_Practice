@@ -22,8 +22,8 @@ void generate_circle()
 
 cv::Point generate_point()
 {
-    int x = getRandomInt(1, 200);
-    int y = getRandomInt(1, 200);
+    int x = get_random_int(1, IMAGE_SIZE);
+    int y = get_random_int(1, IMAGE_SIZE);
     cv::Point point(x, y);
 
     return point;
@@ -70,10 +70,12 @@ void generate_rectangles()
     for (int i = 0; i < 10; ++i)
     {
         cv::Mat img = generate_basic_image();
+        cv::Point bottom_left_corner = generate_point();
+        // int height = get_random_int();
     }
 }
 
-int getRandomInt(int low, int high)
+int get_random_int(int low, int high)
 {
     static std::random_device rd;
     static std::mt19937 gen(rd());
