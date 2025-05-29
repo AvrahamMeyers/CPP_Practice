@@ -4,8 +4,7 @@
 
 cv::Mat generate_basic_image()
 {
-    int width = 200, height = 200;
-    cv::Mat img(height, width, CV_8UC1, cv::Scalar(0));
+    cv::Mat img(IMAGE_SIZE, IMAGE_SIZE, CV_8UC1, cv::Scalar(0));
 
     return img;
 }
@@ -23,12 +22,8 @@ void generate_circle()
 
 cv::Point generate_point()
 {
-    static std::random_device rd;                        // Seed
-    static std::mt19937 gen(rd());                       // Mersenne Twister engine
-    static std::uniform_int_distribution<> dist(1, 200); // Range [1, 10]
-
-    int x = dist(gen);
-    int y = dist(gen);
+    int x = getRandomInt(1, 200);
+    int y = getRandomInt(1, 200);
     cv::Point point(x, y);
 
     return point;

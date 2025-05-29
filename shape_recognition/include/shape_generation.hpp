@@ -3,6 +3,8 @@
 
 #include <opencv2/opencv.hpp>
 
+constexpr int IMAGE_SIZE = 200;
+
 cv::Mat generate_basic_image();
 
 void generate_circle();
